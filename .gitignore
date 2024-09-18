@@ -1,0 +1,7 @@
+.env
+data.sqlite3
+*.session
+__pycache__
+*.pickle
+*.sql
+test.py
