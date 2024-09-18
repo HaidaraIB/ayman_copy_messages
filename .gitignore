@@ -1,6 +1,7 @@
 .env
 data.sqlite3
 *.session
+*.session-jornal
 __pycache__
 *.pickle
 *.sql
