@@ -11,6 +11,8 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
 from dotenv import load_dotenv
 
 load_dotenv()
