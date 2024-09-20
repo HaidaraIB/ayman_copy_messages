@@ -47,7 +47,7 @@ async def get_post(event: events.NewMessage.Event | events.Album.Event):
     message: Message = event.message
     for row in message.buttons:
         for b in row:
-            for k, prod in products_dict:
+            for k, prod in products_dict.items():
                 if k in b.url:
                     product = prod
     if not product:

@@ -8,7 +8,7 @@ AV_SOON_FILE_NAME = "av_soon_message.pickle"
 AV_SOON_TEXT = "سيتوفر قريبا"
 AV_TEXT = "المنتج متوفر"
 
-channel_settings_keyboard = [
+settings_keyboard = [
     [
         InlineKeyboardButton(
             text="تعديل قناة النسخ",
