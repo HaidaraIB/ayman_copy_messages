@@ -10,7 +10,7 @@ from telegram.ext import (
 
 from functions import pickle_in, unpickle
 from common import (
-    channel_settings_keyboard,
+    settings_keyboard,
     build_back_button,
     TO_FILE_NAME,
     FROM_FILE_NAME,
@@ -28,13 +28,13 @@ async def channels_settings(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]:
         if update.message:
             await update.message.reply_text(
-                text="إعدادات القنوات",
-                reply_markup=InlineKeyboardMarkup(channel_settings_keyboard),
+                text="إعدادات البوت",
+                reply_markup=InlineKeyboardMarkup(settings_keyboard),
             )
         else:
             await update.callback_query.edit_message_text(
-                text="إعدادات القنوات",
-                reply_markup=InlineKeyboardMarkup(channel_settings_keyboard),
+                text="إعدادات البوت",
+                reply_markup=InlineKeyboardMarkup(settings_keyboard),
             )
         return ConversationHandler.END
 
@@ -86,7 +86,7 @@ async def new_channel_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text = "تم التعديل بنجاح ✅"
         await update.message.reply_text(
             text=text,
-            reply_markup=InlineKeyboardMarkup(channel_settings_keyboard),
+            reply_markup=InlineKeyboardMarkup(settings_keyboard),
         )
         return ConversationHandler.END
 
@@ -103,7 +103,7 @@ async def show_channels(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text += "اختر ماذا تريد أن تفعل:"
         await update.callback_query.edit_message_text(
             text=text,
-            reply_markup=InlineKeyboardMarkup(channel_settings_keyboard),
+            reply_markup=InlineKeyboardMarkup(settings_keyboard),
         )
 
 
