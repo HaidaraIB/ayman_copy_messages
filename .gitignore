@@ -6,3 +6,4 @@ __pycache__
 *.pickle
 *.sql
 test.py
+to_deliver
