@@ -23,6 +23,12 @@ client = TelegramClient(
     api_id=os.getenv("API_ID"),
 ).start(phone=os.getenv("PHONE"))
 
+bot = TelegramClient(
+    session="bot_session",
+    api_hash=os.getenv("API_HASH"),
+    api_id=os.getenv("API_ID"),
+).start(bot_token=os.getenv("BOT_TOKEN"))
+
 
 @client.on(events.NewMessage())
 async def get_post(event: events.NewMessage.Event | events.Album.Event):
@@ -64,16 +70,18 @@ async def get_post(event: events.NewMessage.Event | events.Album.Event):
             )
         # Single Photo
         if message.photo or message.video:
-            msg = await client.send_file(
+            path = await client.download_media(message, "photos")
+            msg = await bot.send_file(
                 TO_CHANNEL,
                 caption=temb.replace("$$$", product),
-                file=message.photo if message.photo else message.video,
+                file=path,
                 reply_to=stored_msg[0] if stored_msg else None,
                 buttons=message.buttons,
             )
+            os.remove(path)
         # Just Text
         else:
-            msg = await client.send_message(
+            msg = await bot.send_message(
                 entity=TO_CHANNEL,
                 message=temb.replace("$$$", product),
                 reply_to=stored_msg[0] if stored_msg else None,
